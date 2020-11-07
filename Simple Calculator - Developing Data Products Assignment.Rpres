@@ -1,0 +1,98 @@
+Multiplieer and Divider - Developing Data Products Assignment
+========================================================
+author: Gadil ShivaPuthra
+date:   7th November,2020
+autosize: true
+Breif Introduction
+========================================================
+
+
+Final Assignment of Developing Data Products.
+This app includes :
+- Two number inputs
+- Two Action Buttons
+
+You can find the app here : https://www.shinyapps.io/admin/#/application/3185470
+
+Widgets Used
+========================================================
+
+- numericInput: To input fields to let the user define the values to be calculated.
+
+- actionButton: The required action will be instigated once the one actionbutton is clicked.
+
+Front End Code
+========================================================
+```{r}
+library(shiny)
+# wafkjhwieusfkhwuiehvweuisghuiervieljkvkaaielrdhkvbeuilvbgiv
+#sfheuigherigheiupghguihguihwguihwuighgh
+#jhlfeiugheuigughiughsghwuighguihgh
+shinyUI(fluidPage(
+    titlePanel("Multiply and Divide (made easy)"),
+    sidebarLayout(
+        sidebarPanel(
+            helpText("You can multiply and divide using this very easily"),   #uyfgeirusfgbiwubvbesuvebvui
+            numericInput("first", label = h6("Number1 please"), value = 0),  #sfhiegbeibgepisbgepyirgvyiebgy
+            numericInput("second", label = h6("Number2 please"), value = 0), #sofiheurghuiehgfhuipwhuiwhfgpuihwpguih3uiw
+            actionButton("mult", label = "multiply"),
+            actionButton("div", label = "divide")        
+        ),
+        #sjhweighfierygbegiekbgiebgiuebgeiugbiuebgeib
+        mainPanel(
+            tabsetPanel(
+                tabPanel("Output",
+                         p(h5("Calculated value:")),
+                         textOutput("answ")
+                ), #fwoifgy3wgfyusbvehbvfaeysfvngnpfwhfshhfuyakfgeb
+                tabPanel("Extra Details",
+                         p(h4("Multiply and Divide:")),
+                         helpText("Here you can perform any large multiplications and divisions easily"),
+                         HTML("<u><b>Formulae Used: </b></u>
+                                              <br> <br>
+                                              <b> Multiplication : Answer = numberek * numberdo <br>
+                                              Division : Answer = numberek / numberdo </b>")
+                      #fwseuifhwosfhebuerfosdbveubgsoejgsbuovberbverbh   
+                )
+            )
+        )
+    )
+))
+```
+
+Server End Code
+========================================================
+```{r}
+library(shiny)
+#hbfeuysvhbevuhebvbhrhvbrehvbiedjvierlbvioerbvbevhlbruodhlbvudvhb
+shinyServer(function(input, output) {
+    values <- reactiveValues(ff = 0, gg = 0, f=0, g=0)
+    # Multiplication and Division    fuebfyubevbhebveubvbvuebvyubvueeuivbevbvvjkvuisjdnjkvdjvevuibvebvjbjvelkejj
+    observeEvent(input$mult,{
+        values$ff <- 1
+        values$gg <- 0
+        values$f <- input$first * input$second
+    })#hbyubhvouedfbvouherbvuehbvhebvubrivbbrhdfbvhjbebveuvbuevh
+    #Uqfyubeyrvyeyebvvnjeviuebviebuvbeuiobveiubveuiovbovlebouivbeuobvoeuisbveoskljveakaouvwuesbvwusebvbubhwsvubev
+    observeEvent(input$div,{
+        values$ff <- 0         #ufeyfbebyuerofiberbvsvvboeiulbsaabaaaaaaaaaaajfkkkkkkkkkkbhlsbfuiiiiiiiiiii
+        values$gg <- 1         #ehryiuhe8ruivheurihvyeebyryherioheoiuhebvobbsvzdl
+        values$g <- input$first/input$second #hbwjjjjjjjjjjjjjjjjjjjjshfieruuuuuuuuuuufbhhhhhsjkalkkaoooooooo
+    })
+    
+    # what you get is shown here
+    
+    output$answ <- renderText({
+        if(values$ff){paste("Answer : " , isolate(values$f))}
+        else if(values$gg){paste("Answer : " , isolate(values$g))}
+        else paste("")
+    })
+    
+    #aefhyuwfhuwbgguerhbgurvuiwrbgiuhwrbghfbuibgviurhsbdgubgovubhvubruoyhbvbvurbvubvdbvhudbhvu
+    #jhfeubvuebvuhbvyudbvuhbvurvbuovbobvovolvbolbveruihroeiljfpeicnvuvi
+})
+```
+
+Thankyou!
+========================================================
+I hope you liked my shiny app!
