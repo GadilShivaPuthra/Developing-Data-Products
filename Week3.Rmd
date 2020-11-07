@@ -1,0 +1,36 @@
+---
+title: "Quick Overview on Cars"
+author: "Gadil ShivaPuthra"
+date: "07/11/2020"
+output: 
+    slidy_presentation: default
+    ioslides_presentation: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## *Introduction of the dataset mtcars*
+
+This dataset contains the data of cars with variables such as no. of cylinders, miles per gallon, weight of the car, gear type, engine arrangement, swept volume etc.
+
+The presentation will consist of, A scatter plot with 'mpg' i.e, miles per gallon on Y-axis and 'cyl' i.e, no.of cylinders on the X-axis to determine the effect on mileage of a car based on no.of cylinders.
+
+## *Getting the data into R and showing a brief summary*
+
+```{r}
+data("mtcars")
+
+head(mtcars, n= 15)
+```
+
+## *A plot indicating the effect which we all know already which is the more the no.of cylinders the faster the car is and the faster cars have lesser mileage *
+
+Here mpg =  mileage in miles per gallon 
+and  cyl =  no.of cylinders in the car.
+```{r}
+library(plotly)
+plot_ly(mtcars, x = ~mpg, y = ~cyl, 
+        type = "scatter", mode = "markers", color = ~'blue')
+```
